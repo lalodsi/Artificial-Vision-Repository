@@ -29,7 +29,7 @@ for i = 1:totalImages
     vectorizedImage = reshape(imageGray, 90000, 1);
     normalizedImage = vectorizedImage/norm(vectorizedImage);
     a = vectorizedImagesJunk'*normalizedImage;
-    [F,B] = max(a)
+    [F,B] = max(a);
     title(string(B))
     % title()
 end

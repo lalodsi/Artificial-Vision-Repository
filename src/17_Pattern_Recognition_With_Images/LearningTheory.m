@@ -52,4 +52,5 @@ while finishProgram
     scatter(PatronPrueba(1,1), PatronPrueba(2,1))
     xlim([-2 2])
     ylim([-2 2])
+    title("Use the arrows to move the red point")
 end

@@ -1,13 +1,14 @@
-
-clc
+        clc
 clear all
 close all
 
-Imagen = imread("Circunferencia.bmp");
+cuadrado = load("square.mat").distancias;
+flecha = load("arrow.mat").distancias;
+
+Imagen = imread("cuadrado.bmp");
 ImagenEnGrises = rgb2gray(Imagen);
 f = (ImagenEnGrises < 127);
 f = bwmorph(f, "thin", Inf);
-imshow(f)
 
 [filas, columnas] = size(f);
 
@@ -80,7 +81,14 @@ while f(i,j) == 1
     % drawnow
 end
 
-figure, plot(distancias)
-axis([1, contador, 0, 300])
+% Ajusta la longitud de la señal más corta para que coincida con la más larga
+min_length = min(length(flecha), length(distancias));
+flecha = flecha(1:min_length);
+distancias = distancias(1:min_length);
 
-save("circulo.mat", "distancias")
+x = corrcoef(flecha, distancias);
+% plot(x)
+x(1,2)
+% sum(x,"al
+% 
+% l")
